@@ -339,8 +339,11 @@ namespace Demo.TestModel.PageDeclarations
         public bool CheckPrice()
         {
             var a = basketPrice.GetElementText();
-            var b = "208:-";
-                if (a == b)
+            var b = smokePrice.GetElementText();
+            int c = 29;
+            //var t = string.Format(b);
+            
+                if (a == b + c)
                 {
                     return true;
                 }
