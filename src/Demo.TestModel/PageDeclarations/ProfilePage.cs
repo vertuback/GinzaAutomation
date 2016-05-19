@@ -22,85 +22,85 @@ namespace Demo.TestModel.PageDeclarations
         #region WebElements
         public string OldPhoneNumber { get; set; }
 
-        [FindsBy(How = How.XPath, Using = @"id(""profile"")/div[1]")]
+        [FindsBy(How = How.CssSelector, Using = @"div#profile > div")]
         protected IWebElement smokeMobilnummer { get; set; }
 
         //[FindsBy(How = How.XPath, Using = @"id(""cart"")/div[1]/ul[1]/li[3]")]
         //protected IWebElement smokePrice { get; set; }
 
-        [FindsBy(How = How.XPath, Using = @"id(""orderTab"")/span[1]")]
+        [FindsBy(How = How.CssSelector, Using = @"a#orderTab > span")]
         protected IWebElement tabOrder { get; set; }
 
 
-        [FindsBy(How = How.XPath, Using = @"id(""wishListTab"")/span[1]")]
+        [FindsBy(How = How.CssSelector, Using = @"a#wishListTab > span")]
         protected IWebElement tabWishlist { get; set; }
 
 
-        [FindsBy(How = How.XPath, Using = @"id(""uppgifterTab"")/span[1]")]
+        [FindsBy(How = How.CssSelector, Using = @"a#uppgifterTab > span")]
         protected IWebElement tabUppgifter { get; set; }
 
 
-        [FindsBy(How = How.XPath, Using = @"id(""losenordTab"")/span[1]")]
+        [FindsBy(How = How.CssSelector, Using = @"a#losenordTab > span")]
         protected IWebElement tabLosenord { get; set; }
 
 
-        [FindsBy(How = How.XPath, Using = @"id(""recensionsTab"")/span[1]")]
+        [FindsBy(How = How.CssSelector, Using = @"a#recensionsTab > span")]
         protected IWebElement tabRecensioner { get; set; }
 
 
-        [FindsBy(How = How.XPath, Using = @"id(""phMain_lnbLogout"")")]
+        [FindsBy(How = How.CssSelector, Using = @"a#phMain_lnbLogout")]
         protected IWebElement btnLoggaUt { get; set; }
 
 
-        [FindsBy(How = How.XPath, Using = @"id(""profile"")/div[3]/a[2]")]
+        [FindsBy(How = How.CssSelector, Using = @"div#profile > div:nth-of-type(3) > a:nth-of-type(2)")]
         protected IWebElement btnRedigera { get; set; }
 
 
-        [FindsBy(How = How.XPath, Using = @"id(""profile"")/div[3]/span[1]/a[1]")]
+        [FindsBy(How = How.CssSelector, Using = @"div#profile > div:nth-of-type(3) > span > a")]
         protected IWebElement btnKundkorgen { get; set; }
 
 
-        [FindsBy(How = How.XPath, Using = @"id(""breadcrumbs"")/a[2]")]
+        [FindsBy(How = How.CssSelector, Using = @"p#breadcrumbs > a:nth-of-type(2)")]
         protected IWebElement lnkMinProfilBreadcrumb { get; set; }
 
 
-        [FindsBy(How = How.XPath, Using = @"id(""phMain_ctl00_tbxPersonNumber"")")]
+        [FindsBy(How = How.CssSelector, Using = @"input#phMain_ctl00_tbxPersonNumber")]
         protected IWebElement txtPersonnumer { get; set; }
 
 
-        [FindsBy(How = How.XPath, Using = @"id(""phMain_ctl00_tbxName"")")]
+        [FindsBy(How = How.CssSelector, Using = @"input#phMain_ctl00_tbxName")]
         protected IWebElement txtFornamn { get; set; }
 
 
-        [FindsBy(How = How.XPath, Using = @"id(""phMain_ctl00_tbxSecondName"")")]
+        [FindsBy(How = How.CssSelector, Using = @"input#phMain_ctl00_tbxSecondName")]
         protected IWebElement txtEfternamn { get; set; }
 
 
-        [FindsBy(How = How.XPath, Using = @"id(""phMain_ctl00_ddlCountry"")")]
+        [FindsBy(How = How.CssSelector, Using = @"select#phMain_ctl00_ddlCountry")]
         protected IWebElement comboLand { get; set; }
 
 
-        [FindsBy(How = How.XPath, Using = @"id(""phMain_ctl00_tbxMobile"")")]
+        [FindsBy(How = How.CssSelector, Using = @"input#phMain_ctl00_tbxMobile")]
         protected IWebElement txtMobil { get; set; }
 
 
-        [FindsBy(How = How.XPath, Using = @"id(""phMain_ctl00_tbxPhone"")")]
+        [FindsBy(How = How.CssSelector, Using = @"input#phMain_ctl00_tbxPhone")]
         protected IWebElement txtTelefon { get; set; }
 
 
-        [FindsBy(How = How.XPath, Using = @"id(""phMain_ctl00_lnkbSent"")")]
+        [FindsBy(How = How.CssSelector, Using = @"div#product > div > div:nth-of-type(4) > div > div:nth-of-type(3) > a")]
         protected IWebElement btnSpara { get; set; }
 
 
-        [FindsBy(How = How.XPath, Using = @"id(""phMain_ctl01_tbxNewPass"")")]
+        [FindsBy(How = How.CssSelector, Using = @"input#phMain_ctl01_tbxNewPass")]
         protected IWebElement txtChangePassword { get; set; }
 
 
-        [FindsBy(How = How.XPath, Using = @"id(""phMain_ctl01_tbxRepeatPass"")")]
+        [FindsBy(How = How.CssSelector, Using = @"input#phMain_ctl01_tbxRepeatPass")]
         protected IWebElement txtChangePassword2 { get; set; }
 
 
-        [FindsBy(How = How.XPath, Using = @"id(""phMain_ctl01_lnkbSent"")")]
+        [FindsBy(How = How.CssSelector, Using = @"a#phMain_ctl01_lnkbSent")]
         protected IWebElement btnSand { get; set; }
 
         #endregion

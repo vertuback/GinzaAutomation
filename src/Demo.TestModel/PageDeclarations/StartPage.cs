@@ -19,26 +19,25 @@ namespace Demo.TestModel.PageDeclarations
     {
         #region WebElements
 
-        [FindsBy(How = How.XPath, Using = @"id(""ctl00_ucLogin_lnbLogout"")")]
+        [FindsBy(How = How.CssSelector, Using = @"a#ucLogin_lnbLogout")]
         protected IWebElement btnLogOut { get; set; }
 
         [FindsBy(How = How.ClassName, Using = @"login-link")]
         protected IWebElement btnLogin { get; set; }
-        
-
-        [FindsBy(How = How.PartialLinkText, Using = @"Anna-Lena")]
-        protected IWebElement btnProfileForDimon0000 { get; set; }
 
 
-        [FindsBy(How = How.XPath, Using = @"id(""stSearch4_tbSearch"")")]
+        [FindsBy(How = How.LinkText, Using = @"Mitt konto")]
+        protected IWebElement btnProfile { get; set; }
+
+
+        [FindsBy(How = How.Id, Using = @"stSearch4_tbSearch")]
         protected IWebElement txtSearch { get; set; }
 
 
-        [FindsBy(How = How.XPath, Using = @"id(""stSearch4_btnSearch"")")]
-        protected IWebElement btnSearch { get; set; }
+        [FindsBy(How = How.Id, Using = @"stSearch4_btnSearch")]
+        protected IWebElement btnSearch { get; set; }               
 
-
-        [FindsBy(How = How.XPath, Using = @"id(""phMain_TopMenuCtrl1_rptMainMenu_hplCategory_0"")/span[1]")]
+        [FindsBy(How = How.CssSelector, Using = @"a#phMain_TopMenuCtrl1_rptMainMenu_hplCategory_0")]
         protected IWebElement MusicCategory { get; set; }
 
         #endregion
@@ -80,23 +79,32 @@ namespace Demo.TestModel.PageDeclarations
         }
 
         public static bool VerifyThatUserDimonIsLoggedIn()
-        {   
-            if (SwdBrowser.Driver.FindElements(By.PartialLinkText("Anna-Lena")).Count > 0)
+        {
+            for (int i = 0; i < 10; i++)
             {
-                return true;
+                if (SwdBrowser.Driver.FindElements(By.LinkText("Mitt konto")).Count > 0)
+                {
+                    return true;
+                }
             }
+            
             return false;
         }
 
         public static bool VerifyThatUserDimonIsLoggedInAndLoginIfNot()
         {
-            if (SwdBrowser.Driver.FindElements(By.PartialLinkText("Anna-Lena")).Count > 0)
+            for (int i = 0; i < 10; i++)
             {
-                return true;
+                if (SwdBrowser.Driver.FindElements(By.LinkText("Mitt konto")).Count > 0)
+                {
+                    return true;
+                }
             }
             var btnLoggaIn = SwdBrowser.Driver.FindElement(By.ClassName("login-link"));
             btnLoggaIn.Click();
-            
+
+            VerifyThatUserDimonIsLoggedIn();
+
             return true;
         }
 

@@ -19,35 +19,35 @@ namespace Demo.TestModel.PageDeclarations
     {
         #region WebElements
 
-        [FindsBy(How = How.XPath, Using = @"id(""phMain_ctl00_tbxPersonNumber"")")]
+        [FindsBy(How = How.CssSelector, Using = @"input#ucLogin_ucRegistraion_tbxPersonNumber")]
         protected IWebElement txtPersonnumer { get; set; }
 
 
-        [FindsBy(How = How.XPath, Using = @"id(""phMain_ctl00_tbxName"")")]
+        [FindsBy(How = How.CssSelector, Using = @"input#ucLogin_ucRegistraion_tbxName")]
         protected IWebElement txtFornamn { get; set; }
 
 
-        [FindsBy(How = How.XPath, Using = @"id(""phMain_ctl00_tbxSecondName"")")]
+        [FindsBy(How = How.CssSelector, Using = @"input#ucLogin_ucRegistraion_tbxSecondName")]
         protected IWebElement txtEfternamn { get; set; }
 
 
-        [FindsBy(How = How.XPath, Using = @"id(""phMain_ctl00_tbxLogin"")")]
+        [FindsBy(How = How.CssSelector, Using = @"input#ucLogin_ucRegistraion_tbxLogin")]
         protected IWebElement txtAnvandarnamn { get; set; }
 
 
-        [FindsBy(How = How.XPath, Using = @"id(""phMain_ctl00_tbxEmail"")")]
+        [FindsBy(How = How.CssSelector, Using = @"input#ucLogin_ucRegistraion_tbxEmail")]
         protected IWebElement txtEmail { get; set; }
 
 
-        [FindsBy(How = How.XPath, Using = @"id(""phMain_ctl00_tbxPhone"")")]
+        [FindsBy(How = How.CssSelector, Using = @"input#ucLogin_ucRegistraion_tbxPhone")]
         protected IWebElement txtMobilnr { get; set; }
 
 
-        [FindsBy(How = How.XPath, Using = @"id(""phMain_ctl00_tbxPass"")")]
+        [FindsBy(How = How.CssSelector, Using = @"input#ucLogin_ucRegistraion_tbxPass")]
         protected IWebElement txtLosenord { get; set; }
 
 
-        [FindsBy(How = How.XPath, Using = @"id(""phMain_ctl00_tbxPassRepeat"")")]
+        [FindsBy(How = How.CssSelector, Using = @"input#ucLogin_ucRegistraion_tbxPassRepeat")]
         protected IWebElement txtRepeatLosenord { get; set; }
 
 
@@ -55,31 +55,31 @@ namespace Demo.TestModel.PageDeclarations
         protected IWebElement txtco { get; set; }
 
 
-        [FindsBy(How = How.XPath, Using = @"id(""phMain_ctl00_tbxAddress"")")]
+        [FindsBy(How = How.CssSelector, Using = @"input#ucLogin_ucRegistraion_tbxAddress")]
         protected IWebElement txtLeveransadress { get; set; }
 
 
-        [FindsBy(How = How.XPath, Using = @"id(""phMain_ctl00_tbxPostNumber"")")]
+        [FindsBy(How = How.CssSelector, Using = @"input#ucLogin_ucRegistraion_tbxPostNumber")]
         protected IWebElement txtPostnr { get; set; }
 
 
-        [FindsBy(How = How.XPath, Using = @"id(""phMain_ctl00_tbxCity"")")]
+        [FindsBy(How = How.CssSelector, Using = @"input#ucLogin_ucRegistraion_tbxCity")]
         protected IWebElement txtPostort { get; set; }
 
 
-        [FindsBy(How = How.XPath, Using = @"id(""phMain_ctl00_ddlCountry"")")]
+        [FindsBy(How = How.CssSelector, Using = @"select#ucLogin_ucRegistraion_ddlCountry")]
         protected IWebElement comboLand { get; set; }
 
 
-        [FindsBy(How = How.XPath, Using = @"id(""phMain_ctl00_chkCatalogue"")")]
+        [FindsBy(How = How.CssSelector, Using = @"input#ucLogin_ucRegistraion_chkCatalogue")]
         protected IWebElement chkKatalog { get; set; }
 
 
-        [FindsBy(How = How.XPath, Using = @"id(""phMain_ctl00_chkNews"")")]
+        [FindsBy(How= How.CssSelector, Using = @"input#ucLogin_ucRegistraion_chkNews")]
         protected IWebElement chkNewsletter { get; set; }
 
 
-        [FindsBy(How = How.XPath, Using = @"id(""phMain_ctl00_lnkbSubmit"")")]
+        [FindsBy(How= How.CssSelector, Using = @"a#ucLogin_ucRegistraion_lnkbSubmit")]
         protected IWebElement btnSkapaKonto { get; set; }
         
         #endregion    
