@@ -13,6 +13,7 @@ using Swd.Core.WebDriver;
 #region Usings - WebDriver
 using OpenQA.Selenium.Support.PageObjects;
 using OpenQA.Selenium;
+using System.Text.RegularExpressions;
 #endregion
 namespace Demo.TestModel.PageDeclarations
 {
@@ -298,7 +299,7 @@ namespace Demo.TestModel.PageDeclarations
             VerifyElementVisible("smokeNumberOfUsers", smokeNumberOfUsers);
             VerifyElementVisible("lnkRecensioner", lnkRecensioner);
             VerifyElementVisible("tabProductInfo", tabProductInfo);
-            VerifyElementVisible("tabMerAv", tabMerAv);
+            //VerifyElementVisible("tabMerAv", tabMerAv);
             VerifyElementVisible("tabRelaterade", tabRelaterade);
             VerifyElementVisible("tabLeveransInfo", tabLeveransInfo);
             VerifyElementVisible("smokeArtistGrupp", smokeArtistGrupp);
@@ -314,7 +315,7 @@ namespace Demo.TestModel.PageDeclarations
             VerifyElementVisible("smokeLabel", smokeLabel);
             VerifyElementVisible("smokePructionsar", smokePructionsar);
             WaitForAjaxLoading();
-            VerifyElementVisible("lnkRss", lnkRss);
+            //VerifyElementVisible("lnkRss", lnkRss);
             lnkTipsAFriend.Click();
             VerifyElementVisible("txtDitNamn", txtDitNamn);
             VerifyElementVisible("txtEmail", txtEmail);
@@ -326,25 +327,28 @@ namespace Demo.TestModel.PageDeclarations
             //VerifyElementVisible("txtWishlistName", txtWishlistName);
             //VerifyElementVisible("btnLagTill", btnLagTill);
             
-            tabMerAv.Click();
-            VerifyElementVisible("lnkAOfilter", lnkAOfilter);
-            VerifyElementVisible("lnkReleasedatumFilter", lnkReleasedatumFilter);
-            VerifyElementVisible("lnkPrisFilter", lnkPrisFilter);
-            VerifyElementVisible("btnPagingPreviousPage", btnPagingPreviousPage);
-            VerifyElementVisible("btnPagingSecondPage", btnPagingSecondPage);
-            VerifyElementVisible("btnPagingNextPage", btnPagingNextPage);
-            VerifyElementVisible("addProductFromRecommenderasBlock", addProductFromRecommenderasBlock);
-            VerifyElementVisible("addProductFromAndraTittadePaBlock", addProductFromAndraTittadePaBlock);
+            //tabMerAv.Click();
+            //VerifyElementVisible("lnkAOfilter", lnkAOfilter);
+            //VerifyElementVisible("lnkReleasedatumFilter", lnkReleasedatumFilter);
+            //VerifyElementVisible("lnkPrisFilter", lnkPrisFilter);
+            //VerifyElementVisible("btnPagingPreviousPage", btnPagingPreviousPage);
+            //VerifyElementVisible("btnPagingSecondPage", btnPagingSecondPage);
+            //VerifyElementVisible("btnPagingNextPage", btnPagingNextPage);
+            //VerifyElementVisible("addProductFromRecommenderasBlock", addProductFromRecommenderasBlock);
+            //VerifyElementVisible("addProductFromAndraTittadePaBlock", addProductFromAndraTittadePaBlock);
         }
 
         public bool CheckPrice()
         {
             var a = basketPrice.GetElementText();
             var b = smokePrice.GetElementText();
-            int c = 29;
-            //var t = string.Format(b);
-            
-                if (a == b + c)
+            int x = Convert.ToInt32(b);
+            const int c = 29;
+            string cleanString = Regex.Replace(a, "[^A-Za-z0-9]", "");
+            int n = Convert.ToInt32(cleanString);
+
+
+            if (n == x + c)
                 {
                     return true;
                 }

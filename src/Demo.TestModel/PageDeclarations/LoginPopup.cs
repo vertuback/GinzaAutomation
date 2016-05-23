@@ -15,31 +15,31 @@ using OpenQA.Selenium;
 #endregion
 namespace Demo.TestModel.PageDeclarations
 {
-    public class LoginPage : UsefullMethods
+    public class LoginPopup : UsefullMethods
     {
         #region WebElements
 
-        [FindsBy(How = How.XPath, Using = @"id(""phMain_ctl00_loginControl_UserName"")")]
+        [FindsBy(How = How.CssSelector, Using = @"input#ucLogin_LoginForm1_loginControl_UserName")]
         protected IWebElement txtUserName { get; set; }
 
 
-        [FindsBy(How = How.XPath, Using = @"id(""phMain_ctl00_loginControl_Password"")")]
+        [FindsBy(How = How.CssSelector, Using = @"input#ucLogin_LoginForm1_loginControl_Password")]
         protected IWebElement txtUserPassword { get; set; }
 
 
-        [FindsBy(How = How.XPath, Using = @"id(""phMain_ctl00_loginControl_RememberMe"")")]
+        [FindsBy(How = How.CssSelector, Using = @"input#ucLogin_LoginForm1_loginControl_RememberMe")]
         protected IWebElement chkRememberMe { get; set; }
 
 
-        [FindsBy(How = How.XPath, Using = @"id(""phMain_ctl00_loginControl_pnlLoginBox"")/ul[1]/li[5]/p[1]/a[1]")]
+        [FindsBy(How = How.CssSelector, Using = @"a#rememberPass")]
         protected IWebElement lnkForgotPassword { get; set; }
 
 
-        [FindsBy(How = How.XPath, Using = @"id(""phMain_ctl00_loginControl_hlRegLink"")")]
+        [FindsBy(How = How.CssSelector, Using = @"a#ucLogin_LoginForm1_loginControl_hlRegLink")]
         protected IWebElement lnkRegisterNewUser { get; set; }
 
 
-        [FindsBy(How = How.XPath, Using = @"id(""phMain_ctl00_loginControl_Login"")")]
+        [FindsBy(How=How.CssSelector, Using = @"a#ucLogin_LoginForm1_loginControl_Login")]
         protected IWebElement btnLoggaIn { get; set; }
 
         #endregion
@@ -47,10 +47,17 @@ namespace Demo.TestModel.PageDeclarations
         #region Invoke() and IsDisplayed()
         public override void Invoke()
         {
-            SwdBrowser.Driver.Url = "http://www.ginza.se/login/login3.aspx";
+            SwdBrowser.Driver.Url = "http://www.ginza.se/";
+            WaitForAjaxLoading();
+            WaitForJSLoading();
             //MyPages.StartPage.IsDisplayed();
-            //var btnLoggaIn = SwdBrowser.Driver.FindElement(By.ClassName("login-link"));
-            //btnLoggaIn.Click();
+            MyPages.StartPage.LoggaUtIfNeeded();
+            var btnLoggaIn = SwdBrowser.Driver.FindElement(By.ClassName("login-link"));
+            btnLoggaIn.Click();
+            WaitForAjaxLoading();
+            WaitForJSLoading();
+            SwdBrowser.Driver.SwitchTo().Window(SwdBrowser.Driver.WindowHandles.Last());
+           
             
         }
 
@@ -78,10 +85,16 @@ namespace Demo.TestModel.PageDeclarations
 
         //}
 
-        public void LoginAsDimon()
+        public void LoginAsRegularUser()
         {
             txtUserName.SendKeys("dimon0000");
             txtUserPassword.SendKeys("232233");
+            btnLoggaIn.Click();
+        }
+        public void LoginAsCompanyUser()
+        {
+            txtUserName.SendKeys("oldsst");
+            txtUserPassword.SendKeys("myrslok");
             btnLoggaIn.Click();
         }
     }

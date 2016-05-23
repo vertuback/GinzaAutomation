@@ -40,9 +40,9 @@ namespace Demo.TestProject.Smoke
         }
 
         [TestMethod]
-        public void LoginPage_VerifyExpectedElements()
+        public void LoginPopup_VerifyExpectedElements()
         {
-            PageTest(MyPages.LoginPage);
+            PageTest(MyPages.LoginPopup);
         }
         [TestMethod]
         public void StartPage_VerifyExpectedElements()

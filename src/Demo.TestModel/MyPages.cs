@@ -46,7 +46,7 @@ namespace Demo.TestModel
         //=======================================================================================
 
         public static RegistrationPopup RegistrationPopup { get { return GetPage<RegistrationPopup>(); } }
-        public static LoginPage LoginPage { get { return GetPage<LoginPage>(); } }
+        public static LoginPopup LoginPopup { get { return GetPage<LoginPopup>(); } }
         public static StartPage StartPage { get { return GetPage<StartPage>(); } }
         public static ProfilePage ProfilePage { get { return GetPage<ProfilePage>(); } }
         public static ProductPage ProductPage { get { return GetPage<ProductPage>(); } }

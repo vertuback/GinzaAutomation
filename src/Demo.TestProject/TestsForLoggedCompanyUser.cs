@@ -13,30 +13,46 @@ using Demo.TestModel.PageDeclarations;
 namespace Demo.TestProject
 {
     [TestClass]
-    public class TestsForLoggedCompanyUser
+    public class TestsForLoginAsUser
     {
         [TestMethod]
-        public void Test0001LoginAsExistedCompanyUser()
+        public void Test0001LoginAsExistedRegularUser()
         {
-            //Check possibility to login as existed company user (dimon0000)
+            //Check possibility to login as existed regular user (dimon0000)
 
             //startpage
             SwdBrowser.Driver.Url = "http://www.ginza.se/";
             MyPages.StartPage.IsLoggedUserExist();
             MyPages.StartPage.WaitUntilVisible();
             //loginpage
-            MyPages.LoginPage.Invoke();
-            MyPages.LoginPage.LoginAsDimon();
+            MyPages.LoginPopup.Invoke();
+            MyPages.LoginPopup.LoginAsRegularUser();
             
 
-            Assert.IsTrue(StartPage.VerifyThatUserDimonIsLoggedInAndLoginIfNot());
+            Assert.IsTrue(StartPage.VerifyThatUserDimonIsLoggedIn());
+        }
+        [TestMethod]
+        public void Test0002LoginAsExistedCompanyUser()
+        {
+            //Check possibility to login as existed company user (comni)
+
+            //startpage
+            SwdBrowser.Driver.Url = "http://www.ginza.se/";
+            MyPages.StartPage.IsLoggedUserExist();
+            MyPages.StartPage.WaitUntilVisible();
+            //loginpage
+            MyPages.LoginPopup.Invoke();
+            MyPages.LoginPopup.LoginAsCompanyUser();
+
+
+            Assert.IsTrue(StartPage.VerifyThatUserOldsstIsLoggedIn());
         }
     }
-        [TestClass]
-    public  class ChangeProfileSaving : ProfilePage
+    [TestClass]
+    public class ChangeProfileSaving : ProfilePage
     {
         [TestMethod]
-        public void Test0002OpenProfileAndSaveNewValues()
+        public void Test0003OpenProfileAndSaveNewValues()
         {
             //Open profile for logged user and verify elements
 
@@ -55,11 +71,12 @@ namespace Demo.TestProject
 
             Assert.IsTrue(CompareNewAndOldMobileNumbers());
         }
+    }
             [TestClass]
         public class ProductPageTests : ProductPage
         {
             [TestMethod]
-            public void Test0003AddProductToBasketFromProductPageAndCheckPrice()
+            public void Test0004AddProductToBasketFromProductPageAndCheckPrice()
             {
                 //Open Product page and trying to add product to basket
                 //product page
@@ -75,88 +92,7 @@ namespace Demo.TestProject
                 Assert.IsTrue(CheckPrice());
             }
             [TestMethod]
-            public void Test0004CheckMerAvTabSortingByAlphabet()
-            {
-                //Open Product page and then Mer Av "Artist" tab and click on filter by alphabet option
-                Invoke();   //opening product page
-                WaitForJSLoading();
-                WaitForAjaxLoading();
-                tabMerAv.Click();              
-                lnkAOfilter.IsDisplayedSafe();
-                CheckFirstProductTitleInMerAvTab();
-                lnkAOfilter.Click();
-                WaitForJSLoading();
-                WaitForAjaxLoading();
-
-
-                Assert.IsTrue(CheckFirstProductArtikelnummerInMerAvTabAfterFiltering());
-            }
-            [TestMethod]
-            public void Test0005CheckMerAvTabSortingByPrice()
-            {
-                //Open Product page and then Mer Av "Artist" tab and click on filter by price option
-                Invoke();   //opening product page
-                WaitForJSLoading();
-                WaitForAjaxLoading();
-                tabMerAv.Click();
-                lnkPrisFilter.IsDisplayedSafe();
-                CheckFirstProductPriceInMerAvTab();
-                lnkPrisFilter.Click();
-                WaitForJSLoading();
-                WaitForAjaxLoading(); 
-
-
-                Assert.IsTrue(CheckFirstProductPriceInMerAvTabAfterFiltering());
-            }
-            [TestMethod]
-            public void Test0006CheckMerAvTabSortingByReleaseDatum()
-            {
-                //Open Product page and then Mer Av "Artist" tab and click on filter by release date option
-                Invoke();   //opening product page
-                WaitForJSLoading();
-                WaitForAjaxLoading();
-                tabMerAv.Click();
-                lnkReleasedatumFilter.IsDisplayedSafe();
-                CheckFirstProductArtikelnummerInMerAvTab();
-                lnkReleasedatumFilter.Click();
-                WaitForJSLoading();
-                WaitForAjaxLoading();
-
-
-                Assert.IsTrue(CheckFirstProductArtikelnummerInMerAvTabAfterFiltering());
-            }
-            [TestMethod]
-            public void Test0007CheckMerAvTabPagingByClickingNextPagebtn()
-            {
-                //test paging by using next page button
-                Invoke();   //opening product page
-                WaitForJSLoading();
-                WaitForAjaxLoading();
-                tabMerAv.Click();
-                lnkReleasedatumFilter.IsDisplayedSafe();
-                CheckFirstProductArtikelnummerInMerAvTab();
-                btnPagingNextPage.Click();                
-                WaitForJSLoading();
-                WaitForAjaxLoading();
-
-                Assert.IsTrue(CheckFirstProductArtikelnummerInMerAvTabAfterFiltering());              
-            }
-            [TestMethod]
-            public void Test0008CheckMerAvTabPagingByClickingNumberOfPageBtn()
-            {
-                //test paging by using page number button
-                Invoke();   //opening product page
-                WaitForJSLoading();
-                WaitForAjaxLoading();
-                tabMerAv.Click();
-                lnkReleasedatumFilter.IsDisplayedSafe();
-                CheckFirstProductArtikelnummerInMerAvTab();
-                btnPagingSecondPage.Click();
-
-                Assert.IsTrue(CheckFirstProductArtikelnummerInMerAvTabAfterFiltering());
-            }
-            [TestMethod]
-            public void Test0009LinkOnMerAvTab()
+            public void Test0005LinkOnArtistPage()
             {
                 //test paging by using page number button
                 Invoke();   //opening product page
@@ -170,7 +106,7 @@ namespace Demo.TestProject
 
             }
             [TestMethod]
-            public void Test0010LinkOnLeveransInfo()
+            public void Test0006LinkOnLeveransInfo()
             {
                 //test paging by using page number button
                 Invoke();   //opening product page
@@ -182,9 +118,6 @@ namespace Demo.TestProject
 
                 Assert.IsTrue(smokeLeveransInfoText.IsDisplayedSafe());
 
-            }
-            
-                
+            }                         
         }
-    }
 }

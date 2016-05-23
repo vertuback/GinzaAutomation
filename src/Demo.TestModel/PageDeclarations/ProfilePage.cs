@@ -75,6 +75,9 @@ namespace Demo.TestModel.PageDeclarations
         [FindsBy(How = How.CssSelector, Using = @"input#phMain_ctl00_tbxSecondName")]
         protected IWebElement txtEfternamn { get; set; }
 
+        [FindsBy(How = How.CssSelector, Using = @"input#phMain_ctl00_tbxLogin")]
+        protected IWebElement txtAnvardarnamn { get; set; }
+
 
         [FindsBy(How = How.CssSelector, Using = @"select#phMain_ctl00_ddlCountry")]
         protected IWebElement comboLand { get; set; }
@@ -108,11 +111,21 @@ namespace Demo.TestModel.PageDeclarations
         #region Invoke() and IsDisplayed()
         public override void Invoke()
         {
+            SwdBrowser.Driver.Url = "http://www.ginza.se/";
+            WaitForAjaxLoading();
+            WaitForJSLoading();
+            //MyPages.StartPage.IsDisplayed();
+            MyPages.StartPage.LoggaUtIfNeeded();
+            WaitForAjaxLoading();
+            WaitForJSLoading();
+            var btnLoggaIn = SwdBrowser.Driver.FindElement(By.ClassName("login-link"));
+            btnLoggaIn.Click();
+            MyPages.LoginPopup.LoginAsRegularUser();
+            WaitForAjaxLoading();
+            WaitForJSLoading();           
             SwdBrowser.Driver.Url = "http://www.ginza.se/profile";
-            if (!btnRedigera.IsDisplayedSafe())
-            {
-                MyPages.LoginPage.LoginAsDimon();
-            }
+            WaitForAjaxLoading();
+            WaitForJSLoading();
         }
 
         public override bool IsDisplayed()
@@ -187,10 +200,29 @@ namespace Demo.TestModel.PageDeclarations
                 Thread.Sleep(100);
             }
         }
+        public bool CheckThatUserIsLoggedIn()
+        {
+            WaitForAjaxLoading();
+            WaitForJSLoading();
+            if (tabUppgifter.IsDisplayedSafe())
+            {
+                tabUppgifter.Click();
+            }
+            string b = txtAnvardarnamn.GetElementText();
+            const string a = "oldsst";
+            if (b != a)
+            {
+                return false;
+            }
+            return true;
+        }
         #endregion
 
         public override void VerifyExpectedElementsAreDisplayed()
         {
+            
+            WaitForAjaxLoading();
+            WaitForJSLoading();
             VerifyElementVisible("tabOrder", tabOrder);
             VerifyElementVisible("tabWishlist", tabWishlist);
             VerifyElementVisible("tabUppgifter", tabUppgifter);

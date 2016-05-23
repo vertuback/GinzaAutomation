@@ -87,30 +87,61 @@ namespace Demo.TestModel.PageDeclarations
                     return true;
                 }
             }
-            
+
             return false;
         }
-
-        public static bool VerifyThatUserDimonIsLoggedInAndLoginIfNot()
+        public static bool VerifyThatUserOldsstIsLoggedIn()
         {
-            for (int i = 0; i < 10; i++)
+            if (SwdBrowser.Driver.FindElements(By.LinkText("Mitt konto")).Count > 0)
             {
-                if (SwdBrowser.Driver.FindElements(By.LinkText("Mitt konto")).Count > 0)
-                {
-                    return true;
-                }
+                var btnProfile = SwdBrowser.Driver.FindElement(By.LinkText("Mitt konto"));
+                btnProfile.Click();
+            }                      
+            else
+            {
+                return false;
             }
-            var btnLoggaIn = SwdBrowser.Driver.FindElement(By.ClassName("login-link"));
-            btnLoggaIn.Click();
-
-            VerifyThatUserDimonIsLoggedIn();
-
+            if (!MyPages.ProfilePage.CheckThatUserIsLoggedIn())
+            {
+                return false; 
+            }
             return true;
+
+                  
+
+            //for (int i = 0; i < 10; i++)
+            //{
+            //    if (SwdBrowser.Driver.FindElements(By.LinkText("Mitt konto")).Count > 0)
+            //    {
+            //        return true;
+            //    }
+            //}            
         }
+
+        //public override bool VerifyThatUserDimonIsLoggedIn()
+        //{
+        //    for (int i = 0; i < 10; i++)
+        //    {
+        //        if (SwdBrowser.Driver.FindElements(By.LinkText("Mitt konto")).Count > 0)
+        //        {
+        //            return true;
+        //        }
+        //    }
+        //    var btnLoggaIn = SwdBrowser.Driver.FindElement(By.ClassName("login-link"));
+        //    btnLoggaIn.Click();
+        //    return true;
+        //}
 
         public void WaitUntilVisible()
         {
             MusicCategory.WaitUntilVisible(TimeSpan.FromSeconds(10));
+        }
+        public void LoggaUtIfNeeded()
+        {
+            if (btnLogOut.IsDisplayedSafe())
+            {
+                btnLogOut.Click();
+            }
         }
     }
 }
