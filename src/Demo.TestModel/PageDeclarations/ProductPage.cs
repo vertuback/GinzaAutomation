@@ -23,74 +23,77 @@ namespace Demo.TestModel.PageDeclarations
         public string ArtNummerBeforeFiltering { get; set; }
         public string TitleBeforeFiltering { get; set; }
 
-        [FindsBy(How = How.XPath, Using = @"id(""cart"")/div[1]/ul[1]/li[3]")]
+        [FindsBy(How = How.CssSelector, Using = @"div#cart > div > ul > li:nth-of-type(3)")]
         protected IWebElement basketPrice { get; set; }
 
-        [FindsBy(How = How.XPath, Using = @"id(""phMain_imgPhoto"")")]
+        [FindsBy(How = How.CssSelector, Using = @"img#phMain_imgPhoto")]
         protected IWebElement imgMainImage { get; set; }
 
 
-        [FindsBy(How = How.XPath, Using = @"id(""phMain_aArtist"")/h2[1]")]
+        [FindsBy(How = How.CssSelector, Using = @"a#phMain_aArtist > h2")]
         protected IWebElement lnkArtist { get; set; }
 
 
-        [FindsBy(How = How.XPath, Using = @"id(""product"")/div[2]/h1[1]")]
+        [FindsBy(How = How.CssSelector, Using = @"div#product > div:nth-of-type(2) > h1")]
         protected IWebElement smokeTitle { get; set; }
 
 
-        [FindsBy(How = How.XPath, Using = @"id(""prod-nav"")/li[1]/a[1]")]
+        [FindsBy(How = How.CssSelector, Using = @"ul[id = ""prod-nav""] > li > a > i")]
         protected IWebElement btnPreviousProduct { get; set; }
 
 
-        [FindsBy(How = How.XPath, Using = @"id(""prod-nav"")/li[2]/a[1]")]
+        [FindsBy(How = How.CssSelector, Using = @"ul[id = ""prod-nav""] > li:nth-of-type(2) > a > i")]
         protected IWebElement btnNextProduct { get; set; }
 
 
-        [FindsBy(How = How.XPath, Using = @"id(""phMain_pPrice"")/span[1]")]
+        [FindsBy(How = How.CssSelector, Using = @"p#phMain_pPrice > span")]
         protected IWebElement smokePrice { get; set; }
 
 
-        [FindsBy(How = How.XPath, Using = @"id(""product"")/div[2]/p[2]")]
+        [FindsBy(How = How.CssSelector, Using = @"div#product > div:nth-of-type(2) > p:nth-of-type(2)")]
         protected IWebElement smokeMediaType { get; set; }
 
 
-        [FindsBy(How = How.XPath, Using = @"id(""product"")/div[2]/p[3]/a[1]")]
+        [FindsBy(How = How.CssSelector, Using = @"div#product > div:nth-of-type(2) > p:nth-of-type(3) > a")]
         protected IWebElement lnkMerInfo { get; set; }
 
 
-        [FindsBy(How = How.XPath, Using = @"id(""phMain_btnAddToCart"")")]
+        [FindsBy(How = How.CssSelector, Using = @"input#phMain_btnAddToCart")]
         protected IWebElement btnAddToBasket { get; set; }
 
 
-        [FindsBy(How = How.XPath, Using = @"id(""product"")/div[2]/div[2]/ul[1]/li[1]/a[1]")]
+        [FindsBy(How = How.CssSelector, Using = @"div#product > div:nth-of-type(2) > div:nth-of-type(2) > ul > li > a")]
         protected IWebElement lnkAddToWishlist { get; set; }
 
 
-        [FindsBy(How = How.XPath, Using = @"id(""product"")/div[2]/div[2]/ul[1]/li[3]/a[1]")]
+        [FindsBy(How = How.CssSelector, Using = @"div#product > div:nth-of-type(2) > div:nth-of-type(2) > ul > li:nth-of-type(3) > a")]
         protected IWebElement lnkTipsAFriend { get; set; }
 
 
-        [FindsBy(How = How.XPath, Using = @"id(""product"")/div[2]/div[2]/ul[1]/li[5]/a[1]")]
-        protected IWebElement lnkBloggaOmProdukten { get; set; }
+        [FindsBy(How = How.CssSelector, Using = @"div#product > div:nth-of-type(2) > div:nth-of-type(2) > ul > li:nth-of-type(5) > a")]
+        protected IWebElement lnkPrintPage { get; set; }
 
 
-        [FindsBy(How = How.XPath, Using = @"id(""product"")/div[2]/div[2]/ul[1]/li[6]/a[1]")]
-        protected IWebElement lnkSkrivUt { get; set; }
+        [FindsBy(How = How.CssSelector, Using = @"a#phMain_hlFB")]
+        protected IWebElement lnkFacebookShare { get; set; }
 
 
-        [FindsBy(How = How.XPath, Using = @"id(""product"")/div[2]/div[3]/p[1]/span[1]")]
+        [FindsBy(How = How.CssSelector, Using = @"div#product > div:nth-of-type(2) > p:nth-of-type(5) > span")]
         protected IWebElement smokeRateStars { get; set; }
 
+        [FindsBy(How = How.CssSelector, Using = @"div#product > div:nth-of-type(2) > p:nth-of-type(5) > span > img:nth-of-type(5)")]
+        protected IWebElement lnk5stars { get; set; }
 
-        [FindsBy(How = How.XPath, Using = @"id(""product"")/div[2]/div[3]/p[1]/strong[1]")]
+
+        [FindsBy(How = How.CssSelector, Using = @"div#product > div:nth-of-type(2) > p:nth-of-type(5) > strong > i")]
         protected IWebElement smokeNumberOfUsers { get; set; }
 
 
-        [FindsBy(How = How.XPath, Using = @"id(""product"")/div[2]/div[3]/p[1]/strong[2]/a[1]")]
+        [FindsBy(How = How.CssSelector, Using = @"div#product > div:nth-of-type(2) > p:nth-of-type(5) > strong:nth-of-type(2) > a")]
         protected IWebElement lnkRecensioner { get; set; }
 
 
-        [FindsBy(How = How.XPath, Using = @"id(""product"")/div[6]/ul[1]/li[1]/a[1]/span[1]")]
+        [FindsBy(How = How.CssSelector, Using = @"div#product > div:nth-of-type(8) > ul > li > a > span")]
         protected IWebElement tabProductInfo { get; set; }
 
 
@@ -98,11 +101,11 @@ namespace Demo.TestModel.PageDeclarations
         protected IWebElement tabMerAv { get; set; }
 
 
-        [FindsBy(How = How.XPath, Using = @"id(""relatedTab"")/span[1]")]
+        [FindsBy(How = How.CssSelector, Using = @"a#relatedTab > span")]
         protected IWebElement tabRelaterade { get; set; }
 
 
-        [FindsBy(How = How.XPath, Using = @"id(""leveransinfoTab"")/span[1]")]
+        [FindsBy(How = How.CssSelector, Using = @"a#leveransinfoTab > span")]
         protected IWebElement tabLeveransInfo { get; set; }
 
         [FindsBy(How = How.XPath, Using = @"id(""leveransinfo"")/strong[1]")]
@@ -289,8 +292,7 @@ namespace Demo.TestModel.PageDeclarations
             VerifyElementVisible("btnAddToBasket", btnAddToBasket);
             VerifyElementVisible("lnkAddToWishlist", lnkAddToWishlist);
             VerifyElementVisible("lnkTipsAFriend", lnkTipsAFriend);
-            VerifyElementVisible("lnkBloggaOmProdukten", lnkBloggaOmProdukten);
-            VerifyElementVisible("lnkSkrivUt", lnkSkrivUt);
+            
             WaitForAjaxLoading();
             VerifyElementVisible("smokeRateStars", smokeRateStars);
             VerifyElementVisible("smokeNumberOfUsers", smokeNumberOfUsers);
@@ -323,8 +325,7 @@ namespace Demo.TestModel.PageDeclarations
             //if (StartPage.VerifyThatUserDimonIsLoggedIn())
             //VerifyElementVisible("txtWishlistName", txtWishlistName);
             //VerifyElementVisible("btnLagTill", btnLagTill);
-            lnkBloggaOmProdukten.Click();
-            VerifyElementVisible("smokeBloggatextBox", smokeBloggatextBox);
+            
             tabMerAv.Click();
             VerifyElementVisible("lnkAOfilter", lnkAOfilter);
             VerifyElementVisible("lnkReleasedatumFilter", lnkReleasedatumFilter);
