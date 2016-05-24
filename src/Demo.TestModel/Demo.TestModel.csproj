@@ -49,6 +49,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="PageDeclarations\QuickCart.cs" />
     <Compile Include="UsefullMethods.cs" />
     <Compile Include="MyPages.cs" />
     <Compile Include="PageDeclarations\LoginPopup.cs" />

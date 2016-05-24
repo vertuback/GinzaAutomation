@@ -14,6 +14,8 @@ using Swd.Core.WebDriver;
 using OpenQA.Selenium.Support.PageObjects;
 using OpenQA.Selenium;
 using System.Text.RegularExpressions;
+using OpenQA.Selenium.Support.UI;
+using OpenQA.Selenium.Interactions;
 #endregion
 namespace Demo.TestModel.PageDeclarations
 {
@@ -269,7 +271,8 @@ namespace Demo.TestModel.PageDeclarations
         public override void Invoke()
         {
             SwdBrowser.Driver.Url = "http://www.ginza.se/product/scorpions/return-to-forever-2015-digi-ltd-/266516/";
-            Thread.Sleep(3000);
+            WaitForAjaxLoading();
+            WaitForJSLoading();
         }
 
         public override bool IsDisplayed()
@@ -338,7 +341,7 @@ namespace Demo.TestModel.PageDeclarations
             //VerifyElementVisible("addProductFromAndraTittadePaBlock", addProductFromAndraTittadePaBlock);
         }
 
-        public bool CheckPrice()
+        public bool CheckThatPriceIsTheSameInBasketAndPage()
         {
             var a = basketPrice.GetElementText();
             var b = smokePrice.GetElementText();
@@ -355,6 +358,44 @@ namespace Demo.TestModel.PageDeclarations
             
             return false;
         }
+        public bool CheckThatPriceIsCorrectlyShowedAfterChangingQuantity()
+        {
+            var a = basketPrice.GetElementText();
+            var b = smokePrice.GetElementText();
+            int x = Convert.ToInt32(b);
+            const int c = 29;
+            string cleanString = Regex.Replace(a, "[^A-Za-z0-9]", "");
+            int n = Convert.ToInt32(cleanString);
+            if (n == x + c)
+            {
+                return true;
+            }
+
+            return false;
+        }
+        public bool AddToBasket()
+        {
+            if (btnAddToBasket.IsDisplayedSafe())
+            {
+                btnAddToBasket.Click();
+                WaitForAjaxLoading();
+                WaitForJSLoading();
+            }
+            else
+            {
+                return false;
+            }
+            return true;
+        }
+        //public bool IncreaseQuantityOfproduct()
+        //{
+        //    WebDriverWait wait = new WebDriverWait(SwdBrowser.Driver, TimeSpan.FromSeconds(10));
+        //    var element = wait.Until(ExpectedConditions.ElementIsVisible(By.CssSelector("div#cart > div")));
+
+        //    Actions action = new Actions(SwdBrowser.Driver);
+        //    action.MoveToElement(smokeQuantityOfproducts).Perform();
+        //}
+
         public void CheckFirstProductPriceInMerAvTab()
         {
             var value = smokePriceOfFirstElement.GetElementText();

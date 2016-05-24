@@ -59,5 +59,10 @@ namespace Demo.TestProject.Smoke
         {
             PageTest(MyPages.ProductPage);
         }
+        [TestMethod]
+        public void QuickCart_VerifyExpectedElements()
+        {
+            PageTest(MyPages.QuickCart);
+        }
     }
 }

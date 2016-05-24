@@ -27,7 +27,7 @@ namespace Demo.TestProject
             //loginpage
             MyPages.LoginPopup.Invoke();
             MyPages.LoginPopup.LoginAsRegularUser();
-            
+
 
             Assert.IsTrue(StartPage.VerifyThatUserDimonIsLoggedIn());
         }
@@ -72,52 +72,72 @@ namespace Demo.TestProject
             Assert.IsTrue(CompareNewAndOldMobileNumbers());
         }
     }
-            [TestClass]
-        public class ProductPageTests : ProductPage
+    [TestClass]
+    public class ProductPageTests : ProductPage
+    {
+        [TestMethod]
+        public void Test0004AddProductToBasketFromProductPageAndCheckPrice()
         {
-            [TestMethod]
-            public void Test0004AddProductToBasketFromProductPageAndCheckPrice()
-            {
-                //Open Product page and trying to add product to basket
-                //product page
-                Invoke();   //opening product page
-                smokeRateStars.IsDisplayedSafe();
-                WaitForAjaxLoading();
-                WaitForJSLoading();
-                btnAddToBasket.Click();
-                WaitForAjaxLoading();
-                WaitForJSLoading();
-                smokePrice.IsDisplayedSafe();                                            
+            //Open Product page and trying to add product to basket
+            //product page
+            Invoke();   //opening product page
+            smokeRateStars.IsDisplayedSafe();
+            WaitForAjaxLoading();
+            WaitForJSLoading();
+            btnAddToBasket.Click();
+            WaitForAjaxLoading();
+            WaitForJSLoading();
+            smokePrice.IsDisplayedSafe();
 
-                Assert.IsTrue(CheckPrice());
-            }
-            [TestMethod]
-            public void Test0005LinkOnArtistPage()
-            {
-                //test paging by using page number button
-                Invoke();   //opening product page
-                WaitForJSLoading();
-                WaitForAjaxLoading();
-                lnkArtist.Click();
-                WaitForJSLoading();
-                WaitForAjaxLoading();
-
-                Assert.IsTrue(lnkReleasedatumFilter.IsDisplayedSafe());
-
-            }
-            [TestMethod]
-            public void Test0006LinkOnLeveransInfo()
-            {
-                //test paging by using page number button
-                Invoke();   //opening product page
-                WaitForJSLoading();
-                WaitForAjaxLoading();
-                lnkMerInfo.Click();
-                WaitForJSLoading();
-                WaitForAjaxLoading();
-
-                Assert.IsTrue(smokeLeveransInfoText.IsDisplayedSafe());
-
-            }                         
+            Assert.IsTrue(CheckThatPriceIsTheSameInBasketAndPage());
         }
+        [TestMethod]
+        public void Test0005LinkOnArtistPage()
+        {
+
+            Invoke();   //opening product page
+            WaitForJSLoading();
+            WaitForAjaxLoading();
+            lnkArtist.Click();
+            WaitForJSLoading();
+            WaitForAjaxLoading();
+
+            Assert.IsTrue(lnkReleasedatumFilter.IsDisplayedSafe());
+
+        }
+        [TestMethod]
+        public void Test0006LinkOnLeveransInfo()
+        {
+
+            Invoke();   //opening product page
+            WaitForJSLoading();
+            WaitForAjaxLoading();
+            lnkMerInfo.Click();
+            WaitForJSLoading();
+            WaitForAjaxLoading();
+
+            Assert.IsTrue(smokeLeveransInfoText.IsDisplayedSafe());
+
+        }
+    }
+    [TestClass]
+    public class QuickCartTests : QuickCart
+    {
+        [TestMethod]
+        public void Test0007ChangeQuantityOfproductsInBasketAndCheckPrice()
+        {
+
+            MyPages.ProductPage.Invoke();   //opening product page
+            MyPages.ProductPage.AddToBasket();
+            MyPages.ProductPage.CheckThatPriceIsTheSameInBasketAndPage();
+            
+
+
+            //to be continued...
+
+        }
+    }
 }
+
+    
+

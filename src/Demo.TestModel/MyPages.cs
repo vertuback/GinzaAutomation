@@ -50,6 +50,6 @@ namespace Demo.TestModel
         public static StartPage StartPage { get { return GetPage<StartPage>(); } }
         public static ProfilePage ProfilePage { get { return GetPage<ProfilePage>(); } }
         public static ProductPage ProductPage { get { return GetPage<ProductPage>(); } }
-
+        public static QuickCart QuickCart { get { return GetPage<QuickCart>(); } }
     }
 }
