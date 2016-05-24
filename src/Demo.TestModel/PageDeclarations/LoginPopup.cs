@@ -96,6 +96,8 @@ namespace Demo.TestModel.PageDeclarations
             txtUserName.SendKeys("oldsst");
             txtUserPassword.SendKeys("myrslok");
             btnLoggaIn.Click();
+            WaitForAjaxLoading();
+            WaitForJSLoading();
         }
     }
 }

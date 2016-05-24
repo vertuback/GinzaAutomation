@@ -72,3 +72,6 @@ packages/
 
 #Test files
 *.testsettings
+bin/Demo.TestModel.dll
+bin/Demo.TestModel.pdb
+bin/Swd.Core.dll
